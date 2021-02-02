@@ -1,0 +1,84 @@
+#!/bin/bash
+
+case $1 in
+	#case 1
+	cpugetinfo) 
+	lscpu
+	;;
+	#case 2
+	memorygetinfo) 
+	free
+	;;
+	#case 3
+	usercreate)
+	sudo useradd -m -s /bin/bash $2
+	;;
+	#case 4
+	userlist)
+	cat /etc/passwd
+	;;
+	#case 5
+	userlist--sudo-only)
+	getent group sudo | cut -d: -f4
+	;;
+	#case 6
+	filegetinfo)
+	echo  "Name    : $2"
+	echo -ne "Size(B) : "
+	wc -c $2 | awk '{print $1;}'
+	echo -ne "Access  : "
+	ls -l $2 | awk '{print $1;}'
+	echo -ne "owner   : "
+	ls -l $2 | awk '{print $3;}'
+	echo -ne "Modify  : "
+	date -r $2	
+	;;
+	
+	#case 6.1
+	filegetinfo--s)
+	wc -c $2 | awk '{print $1;}'
+	;;
+	#case 6.2
+	filegetinfo-p)
+	ls -l $2 | awk '{print $1;}'
+	;;
+	#case 6.3
+	filegetinfo-o)
+	ls -l $2 | awk '{print $3;}'	
+	;;
+	#case 6.4
+	filegetinfo-m)
+	date -r $2
+	;;
+
+	#case 7
+	--version)
+	echo "v0.1.0"
+	;;
+
+	
+	#case 8
+	--help)
+	echo "usage: internsctl [OPTION]... [FILE]..."
+	echo Does different operations like show details of cpu,memory,create user,show file details...
+	echo "	"
+	echo "Arguments for different options"
+	echo "cpugetinfo ,		shows information of server"
+	echo "memorygetinfo ,		shows memory information of server"
+	echo "usercreate [user_name],	create a user who can login to system"
+	echo "userlist ,		list all the regular user"
+	echo "userlist--sudo-only ,	list all the user with sudo permissions"
+	echo "filegetinfo ,		shows information anout file"
+	echo "	filegetinfo-s,	print size of file(in bytes)"
+	echo "	filegetinfo-p,	print file permissions"
+	echo "	filegetinfo-o,	print size file owner"
+	echo "	filegetinfo-m,	print last modified time of file"
+	echo "--version ,		print current version of command "
+	echo "--help , 			information about command" 
+	echo "man internsctl ,		For mannual"
+	
+	;;
+	
+esac
+
+	 
