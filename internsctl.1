@@ -1,0 +1,79 @@
+# cat /usr/local/man/internsctl.1
+." Process this file with
+." groff -man -Tascii internsctl.1
+."
+.TH internsctl(1)
+
+.Sh NAME
+.B internsctl
+- user interface to perform some task
+
+.SH SYNOPSIS
+.B internsctl
+.RB {| OBJECT |}
+.RB [| OPTIONS |]
+
+.SH DESCRIPTION
+.B test_script
+Does different operations like show details of cpu,memory,create user,show file details...
+
+.RS
+.nf
+--get memory info
+--get cpu info
+--create file
+--show file details
+.RE
+
+Custom linx command
+
+
+.SH OPTIONS
+.IP "fB--cpugetinfofP "
+sh.shows cpu information of server
+
+.IP "fB--memorygetinfo"
+shows memory information of server
+
+.SH FILES
+.TP
+.I
+filegetinfo
+show info about file
+.TP
+.I
+/usr/bin/test_script
+
+
+.SH DIAGNOSTICS
+.PP
+The activity performed using this utility is logged in the file fB/var/log/test_scriptfR
+
+
+.SH EXIT STATUS
+.TP
+.B
+0
+Success
+
+.TP
+.B
+1
+Success but reboot required
+
+.TP
+.B
+2
+Success but no reboot required
+
+
+.SH COPYRIGHT
+.PP
+created by Akash Deep(akasdee3.0@gmail.com)
+.SH CREDITS
+.PP
+This man page is created only for demonstration purpose by Deepak Prasad <admin@golinuxcloud.com>
+
+.SH
+.PP
+GoLinuxCloud test_script(1)

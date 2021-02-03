@@ -35,7 +35,7 @@ case $1 in
 	;;
 	
 	#case 6.1
-	filegetinfo--s)
+	filegetinfo-s)
 	wc -c $2 | awk '{print $1;}'
 	;;
 	#case 6.2
@@ -63,12 +63,12 @@ case $1 in
 	echo Does different operations like show details of cpu,memory,create user,show file details...
 	echo "	"
 	echo "Arguments for different options"
-	echo "cpugetinfo ,		shows information of server"
+	echo "cpugetinfo ,		shows cpu information of server"
 	echo "memorygetinfo ,		shows memory information of server"
 	echo "usercreate [user_name],	create a user who can login to system"
 	echo "userlist ,		list all the regular user"
 	echo "userlist--sudo-only ,	list all the user with sudo permissions"
-	echo "filegetinfo ,		shows information anout file"
+	echo "ufilegetinfo ,		shows information anout file"
 	echo "	filegetinfo-s,	print size of file(in bytes)"
 	echo "	filegetinfo-p,	print file permissions"
 	echo "	filegetinfo-o,	print size file owner"
